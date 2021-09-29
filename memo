@@ -1,0 +1,10 @@
+CREATE TABLE post (
+    id INTEGER NOT NULL,
+    title TEXT NOT NULL,
+    sport TEXT NOT NULL, 
+    content TEXT NOT NULL,
+    like INTEGER NOT NULL,
+    PRIMARY KEY(id)
+);
+
+ git remote add origin git@github.com: MRs355-2/JK-S2.git
