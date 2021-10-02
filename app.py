@@ -20,8 +20,6 @@ def upload():
                   request.form.get("title"), request.form.get("sport"), request.form.get("content"))
     return redirect("/")
 
-
-
 @app.route("/search")
 def search():
     return render_template("search.html")
@@ -29,7 +27,6 @@ def search():
 @app.route("/search_pattern", method=["POST"])
 def search_pattern():
     
-
 app.debug =  True
 app.run()
 
