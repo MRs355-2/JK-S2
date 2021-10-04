@@ -2,7 +2,7 @@ from flask import Flask,render_template
 
 app = Flask(__name__, static_folder='./templates/images')
 
-db = SQL("sqlite:///texpo.db")
+#db = SQL("sqlite:///texpo.db")
 
 
 @app.route('/')
@@ -13,7 +13,7 @@ def index():
 def second():
     return render_template('another.html')
     
-@app.route('/upload', method=["GET", "POST"])
+@app.route('/upload', methods=["GET", "POST"])
 def upload():
     db.execute = ("INSERT INTO post (title, sport, content) VALUES (?, ?, ?)", 
                   request.form.get("title"), request.form.get("sport"), request.form.get("content"))
