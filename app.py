@@ -1,7 +1,8 @@
 import sqlite3
-from flask import Flask,render_template,request
+from flask import Flask,render_template,request,url_for
+import os
 
-app = Flask(__name__, static_folder='./templates/images')
+app = Flask(__name__, static_folder='./static')
 
 db_conect = sqlite3.connect("texpo.db", check_same_thread=False)
 cursor = db_conect.cursor()
@@ -49,6 +50,18 @@ db_conect.commit()
 app.debug =  True
 app.run()
 
-# Hello world
+#cssが更新されてもwebにキャッシュされる不具合を解消するコード
+#また、このコードを追記するにあたってos,url_forをimportした
+@app.context_processor
+def override_url_for():
+    return dict(url_for=dated_url_for)
 
-#編集
+def dated_url_for(endpoint, **values):
+    if endpoint == 'static':
+        filename = values.get('filename', None)
+        if filename:
+            file_path = os.path.join(app.root_path,
+                                     endpoint, filename)
+            values['q'] = int(os.stat(file_path).st_mtime)
+    return url_for(endpoint, **values)
+    #ここまで
