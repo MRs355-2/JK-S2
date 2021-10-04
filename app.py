@@ -2,8 +2,10 @@ import sqlite3
 from flask import Flask,render_template,request
 
 app = Flask(__name__, static_folder='./templates/images')
+
 db_conect = sqlite3.connect("texpo.db", check_same_thread=False)
 cursor = db_conect.cursor()
+
 
 
 @app.route('/')
