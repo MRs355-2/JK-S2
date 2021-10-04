@@ -3,6 +3,15 @@
     <main>
         <p>texpoメインページ</p>
         <p><a href="/another">別ページへ行く</a></p>
+        <p><a href="/search">検索</a></p>
         <input id="input" type="search" autocomplete="off" spellcheck="false" role="combobox" aria-live="polite" placeholder="キーワード検索">
+
+        {% for num in sport_name %}
+          <tr>
+            {% for sport_name in num %}
+              <h1>{{sport_name}}</h1>
+            {% endfor %}
+          </tr>
+          {% endfor %}
     </main>
 {% endblock %}
