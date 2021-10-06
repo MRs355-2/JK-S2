@@ -17,11 +17,6 @@ def second():
 
 @app.route('/upload', methods=["GET", "POST"])
 def upload():
-<<<<<<< Updated upstream
-    c.execute = ("INSERT INTO post (title, sport, content) VALUES (?, ?, ?)", 
-                  request.form.get("title"), request.form.get("sport"), request.form.get("content"))
-=======
->>>>>>> Stashed changes
     return redirect("/")
 
 app.debug =  True
