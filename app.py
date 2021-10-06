@@ -31,17 +31,39 @@ def search():
 @app.route("/search_pattern", methods=["POST"])
 def search_pattern():
     search_name  = request.form["Sport"]
-    cursor.execute("select sport from post where sport like ?",(search_name,))
+
+    cursor.execute("select title, sport, content from post where sport like ?",(search_name,))
     search_result = cursor.fetchall()
 
     if search_result ==[]:
         print("該当なし")
-        return render_template("index.html",sport_name = search_result)
+        return render_template("index.html",search_result=search_result)
         #HTML上にアラートとして出力
     else:
-        return render_template("index.html",sport_name = search_result)
+        return render_template("index.html",search_result=search_result)
         print("ui")
     cursor.close()
+
+    # # タイトルを出力
+    # cursor.execute("select title from post where sport like ?",(search_name,))
+    # title_result = cursor.fetchall()
+
+    # # スポーツを出力
+    # cursor.execute("select sport from post where sport like ?",(search_name,))
+    # sport_result = cursor.fetchall()
+
+    # #　コンテンツを出力
+    # cursor.execute("select content from post where sport like ?",(search_name,))
+    # contents_result = cursor.fetchall()
+   
+    # if title_result and sport_result and contents_result ==[]:
+    #     print("該当なし")
+    #     return render_template("index.html",title_name = title_result, sport_name = sport_result, contents_name = contents_result)
+    #     #HTML上にアラートとして出力
+    # else:
+    #     return render_template("index.html",title_name = title_result, sport_name = sport_result, contents_name = contents_result)
+    #     print("ui")
+    # cursor.close()
 
 db_conect.commit()
 # cursor.close()

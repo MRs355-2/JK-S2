@@ -7,12 +7,39 @@
         <input id="input" type="search" autocomplete="off" spellcheck="false" role="combobox" aria-live="polite" placeholder="キーワード検索">
         <p>テスト1</p>
 
-        {% for num in sport_name %}
-          <tr>
+        {% for search in search_result %}
+          <hr>
+          <h1>スポーツ</h1>
+          <h2>{{search[1]}}</h2>
+          <br>
+          <h1>タイトル</h1>
+          <h2>{{search[0]}}</h2>
+          <br>
+          <h1>コンテンツ</h1>
+          <h2>{{search[2]}}</h2>
+          <br>
+        {% endfor %}
+
+        <!-- {% for num in sport_name %}
             {% for sport_name in num %}
-              <h1>{{sport_name}}</h1>
+              <h1>スポーツ名</h1>
+              <h2>{{sport_name}}</h2>
             {% endfor %}
-          </tr>
-          {% endfor %}
+        {% endfor %}
+
+        {% for num in title_name %}
+            {% for title_name in num %}
+              <h1>タイトル</h1>
+              <h2>{{title_name}}</h2>
+            {% endfor %}
+        {% endfor %}
+
+        {% for num in contents_name %}
+            {% for contents_name in num %}
+              <h1>コンテンツ</h1>
+              <h2>{{contents_name}}</h2>
+            {% endfor %}
+        {% endfor %} -->
+
     </main>
 {% endblock %}
