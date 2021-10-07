@@ -1,4 +1,31 @@
-<form action = "{{url_for('search_pattern')}}" method = "POST">
-    <input name = "Sport" placeholder="スポーツ">
-    <input type ="submit" value = "送信">
-</form>
+{% extends 'base.html' %}
+{% block main %}
+<main>
+    <center>
+        <div class="search_form mt-5 mb-5">
+            <form action = "{{url_for('search_pattern')}}" method = "POST" class="search_container">
+                <input name = "Sport" placeholder=" スポーツを検索" size="25" class="search_input">
+                <input type ="submit" value = "&#xf002">
+            </form>
+        </div>
+        <div class="search_result">
+            {% for search in search_result %}
+                <div class="sport_container mb-3">
+                    <p class="text-left ml-4 mt-0 mb-2 sport_name">{{search[1]}}</p>
+                    <!-- マウスホバーで色を変更 -->
+                    <div class="sport text-left ml-4">
+                        <h1 class="sport_title">タイトル：</h1>
+                        <h1 class="sport_title">{{search[0]}}</h1>
+                    </div>
+                    <div class="sport text-left ml-4">
+                        <h1 class="sport_title">コンテンツ：</h1>
+                        <h1 class="sport_title">{{search[2]}}</h1>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </center>
+</main>
+    
+
+{% endblock %}

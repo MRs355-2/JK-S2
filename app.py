@@ -37,10 +37,10 @@ def search_pattern():
 
     if search_result ==[]:
         print("該当なし")
-        return render_template("index.html",search_result=search_result)
+        return render_template("search.html",search_result=search_result)
         #HTML上にアラートとして出力
     else:
-        return render_template("index.html",search_result=search_result)
+        return render_template("search.html",search_result=search_result)
         print("ui")
     cursor.close()
 

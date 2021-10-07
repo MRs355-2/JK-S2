@@ -7,18 +7,6 @@
         <input id="input" type="search" autocomplete="off" spellcheck="false" role="combobox" aria-live="polite" placeholder="キーワード検索">
         <p>テスト1</p>
 
-        {% for search in search_result %}
-          <hr>
-          <h1>スポーツ</h1>
-          <h2>{{search[1]}}</h2>
-          <br>
-          <h1>タイトル</h1>
-          <h2>{{search[0]}}</h2>
-          <br>
-          <h1>コンテンツ</h1>
-          <h2>{{search[2]}}</h2>
-          <br>
-        {% endfor %}
-
+        
     </main>
 {% endblock %}
