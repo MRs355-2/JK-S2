@@ -31,15 +31,16 @@ def search():
 @app.route("/search_pattern", methods=["POST"])
 def search_pattern():
     search_name  = request.form["Sport"]
-    cursor.execute("select sport from post where sport like ?",(search_name,))
+
+    cursor.execute("select title, sport, content from post where sport like ?",(search_name,))
     search_result = cursor.fetchall()
 
     if search_result ==[]:
         print("該当なし")
-        return render_template("index.html",sport_name = search_result)
+        return render_template("search.html",search_result=search_result)
         #HTML上にアラートとして出力
     else:
-        return render_template("index.html",sport_name = search_result)
+        return render_template("search.html",search_result=search_result)
         print("ui")
     cursor.close()
 
