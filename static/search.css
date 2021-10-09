@@ -55,3 +55,9 @@
     position:absolute;
     left:-100px;
   }
+
+  .search_result{
+      position:absolute;
+      top:120px;
+      left:-250px;
+  }
