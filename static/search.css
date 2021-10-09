@@ -5,9 +5,10 @@
     border: 1px solid #999;
     padding: 3px 5px;
     height: 2.5em;
-    width: 350px;
+    width: 400px;
     border-radius: 15px;
-    overflow: hidden
+    overflow: hidden;
+
   }
   .search_container input[type="text"]:focus {
     outline: 0;
@@ -22,6 +23,8 @@
     outline : none;
     display: inline-block;
     vertical-align: middle;
+    left:100%;
+    position:absolute;
   }
   .hr{
     margin: 0;
@@ -46,4 +49,9 @@
   }
   .more_icon{
     display: inline-block;
+  }
+
+  .search_form{
+    position:absolute;
+    left:-100px;
   }
