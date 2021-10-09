@@ -1,0 +1,43 @@
+.header_logo{
+    text-align:center;
+    left:35%;
+    position:absolute;
+}
+
+.reg{
+    bottom:0px;
+    display:flex;
+    right:0px;
+}
+
+.reg_text{
+    bottom:0px;
+}
+
+body{
+    height:100%;
+    width:100%;
+    top:0%;
+    display:flex;
+    position:absolute;
+}
+
+footer{
+    position:absolute;
+    bottom:0px;
+    right:10px;
+}
+
+main{
+    position:absolute;
+    top:20%;
+    left:41%;
+    text-align:center;
+
+}
+
+.search_box{
+    border-radius:20px;
+    width:300%;
+    height:300%;
+}
