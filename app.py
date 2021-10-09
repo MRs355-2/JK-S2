@@ -1,27 +1,12 @@
 import sqlite3
-from flask import Flask,render_template,request,url_for
+from flask import Flask, render_template, request, redirect, url_for
 import os
+
 
 app = Flask(__name__, static_folder='./static')
 
 db_conect = sqlite3.connect("texpo.db", check_same_thread=False)
-cursor = db_conect.cursor()
-
-
-
-@app.route('/')
-def index(): 
-    return render_template('index.html')
-
-@app.route('/another')
-def second():
-    return render_template('another.html')
-
-@app.route('/upload', methods=["GET", "POST"])
-def upload():
-    cursor.execute = ("INSERT INTO post (title, sport, content) VALUES (?, ?, ?)",
-                  request.form.get("title"), request.form.get("sport"), request.form.get("content"))
-    return redirect("/")
+cursor = db_conect.cursor()   
 
 @app.route("/search")
 def search():
@@ -43,6 +28,16 @@ def search_pattern():
         return render_template("search.html",search_result=search_result)
         print("ui")
     cursor.close()
+    
+@app.route('/another', methods=["GET", "POST"])
+def second():
+    return render_template('another.html')
+
+@app.route('/upload', methods=["GET", "POST"])
+def upload():
+    cursor.execute("INSERT INTO post (title, sport, content, like) VALUES (?, ?, ?, 0)",
+                  [request.form.get("title"), request.form.get("sport"), request.form.get("content")])
+    return redirect("/")
 
 db_conect.commit()
 # cursor.close()
