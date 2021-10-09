@@ -4,6 +4,10 @@ app = Flask(__name__)
 conn = sqlite3.connect('texpo.db')
 cursor = conn.cursor()
 
+app = Flask(__name__, static_folder='./templates/images')
+db_conect = sqlite3.connect("texpo.db")
+cursor = db_conect.cursor()
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -22,3 +26,5 @@ def upload():
 
 app.debug =  True
 app.run()
+
+# Hello world
