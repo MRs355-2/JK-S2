@@ -10,7 +10,8 @@
         </div>
         <div class="search_result">
             {% if search_result | length == 0 %}
-                <p>検索結果はありません</p>
+                <div class = "not_found"><p>検索結果はありません</p></div>
+                
             {% else %}
                 {% for search in search_result %}
                     <div class="sport_container mb-3">
