@@ -4,6 +4,7 @@
     <head>
         <title>TEXPO</title>
         <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='base.css') }}">
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='another.css') }}">
         <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -27,7 +28,7 @@
 {% endblock %}
     <footer>
         <p><a href="/another"><img src = "{{url_for('static',filename='images/add_button.png')}}"></a></p>
-        <div class = "reg"><h5 class = "reg_text">Codegym_S2_JK</h5></div>
+        <div class = "reg"><h5 class = "reg_text">Codegym_S2_JK<img class = "icon" src = "{{url_for('static',filename='images/icon.png')}}"></h5></div>
     </footer>
     </body>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
