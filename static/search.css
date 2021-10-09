@@ -4,9 +4,9 @@
   .search_input{
     border: 1px solid #999;
     padding: 3px 5px;
-    height: 2.5em;
-    width: 400px;
-    border-radius: 15px;
+    height: 50px;
+    width: 600px;
+    border-radius: 20px;
     overflow: hidden;
 
   }
@@ -53,7 +53,7 @@
 
   .search_form{
     position:absolute;
-    left:-100px;
+    left:-180px;
   }
 
   .search_result{

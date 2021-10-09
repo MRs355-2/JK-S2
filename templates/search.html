@@ -9,21 +9,25 @@
             </form>
         </div>
         <div class="search_result">
-            {% for search in search_result %}
-                <div class="sport_container mb-3">
-                    <p class="text-left ml-4 mt-0 mb-2 sport_name">{{search[1]}}</p>
-                    <!-- マウスホバーで色を変更 -->
-                    <div class="sport text-left ml-4">
-                        <h1 class="sport_title sport_pattern"><a href="#" id="more_show">{{search[0]}}</a></h1>
+            {% if search_result | length == 0 %}
+                <p>検索結果はありません</p>
+            {% else %}
+                {% for search in search_result %}
+                    <div class="sport_container mb-3">
+                        <p class="text-left ml-4 mt-0 mb-2 sport_name">{{search[1]}}</p>
+                        <!-- マウスホバーで色を変更 -->
+                        <div class="sport text-left ml-4">
+                            <h1 class="sport_title sport_pattern"><a href="#" id="more_show">{{search[0]}}</a></h1>
+                        </div>
+                        <div class="sport text-left ml-5">
+                            <p class="sport_contents sport_pattern">{{search[2]}}</p>
+                        </div>
+                        <div class="more_show text-right pb-2 mr-4">
+                            <span class="more_text"><a href="#" style="color: rgba(130, 130, 130 );">もっと見る <i class="fas fa-angle-right"></i></a></span>
+                        </div>
                     </div>
-                    <div class="sport text-left ml-5">
-                        <p class="sport_contents sport_pattern">{{search[2]}}</p>
-                    </div>
-                    <div class="more_show text-right pb-2 mr-4">
-                        <span class="more_text"><a href="#" style="color: rgba(130, 130, 130 );">もっと見る <i class="fas fa-angle-right"></i></a></span>
-                    </div>
-                </div>
-            {% endfor %}
+                {% endfor %}
+            {% endif %}
         </div>
     </center>
 </main>
