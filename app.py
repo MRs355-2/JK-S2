@@ -1,23 +1,24 @@
 import sqlite3
-from flask import Flask,render_template
+from flask import Flask,render_template, request, redirect
 app = Flask(__name__)
-conn = sqlite3.connect('texpo.db') 
-c = conn.cursor() 
-
+conn = sqlite3.connect('texpo.db')
+cursor = conn.cursor()
 
 @app.route('/')
-def index(): 
+def index():
     return render_template('index.html')
 
 @app.route('/another', methods=["GET", "POST"])
-def second(): 
-    cursor.execute = ("INSERT INTO post (title, sport, content) VALUES (?, ?, ?)",
-                  request.form.get("title"), request.form.get("sport"), request.form.get("content"))
+def second():
     return render_template('another.html')
 
 @app.route('/upload', methods=["GET", "POST"])
 def upload():
+    cursor.execute("INSERT INTO post (title, sport, content, like) VALUES (?, ?, ?, 0)",
+                  [request.form.get("title"), request.form.get("sport"), request.form.get("content")])
+    cursor.commit()
     return redirect("/")
+
 
 app.debug =  True
 app.run()
