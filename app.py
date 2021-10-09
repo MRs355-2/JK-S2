@@ -7,8 +7,8 @@ app = Flask(__name__, static_folder='./static')
 
 db_conect = sqlite3.connect("texpo.db", check_same_thread=False)
 cursor = db_conect.cursor()   
-
-@app.route("/search")
+    
+@app.route("/")
 def search():
     return render_template("search.html")
 
