@@ -7,12 +7,12 @@
             <form class="form" action="upload" method="post">
                 <!-- <label for="title">何について</label> ラベルをつけるかはまだ検討中-->
                 <div class="item">
-                    <input type="text" name="title" placeholder="タイトル" required autofocus>
+                    <input class = "title_input" type="text" name="title" placeholder="タイトル" required autofocus>
                 </div>
                 
                 <!--ここの選択肢をどうするか-->
                 <div class="item">
-                    <select name="sport" required>
+                    <select class = "select_sports" name="sport" required>
                         <option value="サッカー">サッカー</option>
                         <option value="テニス">テニス</option>
                         <option value="ゴルフ">ゴルフ</option>
@@ -21,15 +21,14 @@
                 </div>
                 
                 <div class="item">
-                    <input type="text" name="content" placeholder="説明" required autofocus>
+                    <input class = "desc_input" type="text" name="content" placeholder="説明" required autofocus>
                 </div>
                 
-                <button type="submit">投稿</button>
+                <p><a class = "cancel" href="/">トップページへ戻る</a><button class = "pub_button" type="submit">投稿</button></p>
                 
             </form>
             
         </div>
         
-        <p><a href="/">トップページへ戻る</a></p>
     </main>
 {% endblock %}
