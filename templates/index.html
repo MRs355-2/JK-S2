@@ -1,18 +1,20 @@
 {% extends 'base.html' %}
 {% block main %}
     <main>
-        <p>texpoメインページ</p>
-        <p><a href="/another">別ページへ行く</a></p>
-        <p><a href="/search">検索</a></p>
-        <input id="input" type="search" autocomplete="off" spellcheck="false" role="combobox" aria-live="polite" placeholder="キーワード検索">
-        <p>テスト1</p>
+        <div class = "index">
+            <input class = "search_box" id="input" type="search" autocomplete="off" spellcheck="false" role="combobox" aria-live="polite" placeholder="キーワード検索">
+            <p><a href="/another">別ページへ行く</a></p>
+            <p><a href="/search">検索</a></p>
+            
+            <p>テスト1</p>
 
-        {% for num in sport_name %}
-          <tr>
-            {% for sport_name in num %}
-              <h1>{{sport_name}}</h1>
+            {% for num in sport_name %}
+            <tr>
+                {% for sport_name in num %}
+                <h1>{{sport_name}}</h1>
+                {% endfor %}
+            </tr>
             {% endfor %}
-          </tr>
-          {% endfor %}
+          </div>
     </main>
 {% endblock %}
