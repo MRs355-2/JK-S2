@@ -16,8 +16,7 @@ def search():
 @app.route("/search_pattern", methods=["POST"])
 def search_pattern():
     search_name  = request.form["Sport"]
-
-    cursor.execute("select title, sport, content from post where sport like ?",(search_name,))
+    cursor.execute("select title, sport, content, id from post where sport like ?",(search_name,))
     search_result = cursor.fetchall()
 
     if search_result ==[]:
@@ -28,6 +27,13 @@ def search_pattern():
         return render_template("search.html",search_result=search_result)
         print("ui")
     cursor.close()
+
+# @app.route("/search_pattern", methods=["POST"])
+# def more_show():
+#     more_text = request.form["name"]
+
+#     more_text == 
+
     
 @app.route('/another', methods=["GET", "POST"])
 def second():
@@ -38,6 +44,7 @@ def upload():
     cursor.execute("INSERT INTO post (title, sport, content, like) VALUES (?, ?, ?, 0)",
                   [request.form.get("title"), request.form.get("sport"), request.form.get("content")])
     return redirect("/")
+
 
 db_conect.commit()
 # cursor.close()

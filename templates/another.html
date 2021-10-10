@@ -1,16 +1,17 @@
 {% extends 'base.html' %}
 {% block main %}
 <!--新しい投稿-->
-    <main>
+    <!-- <main>
         <div class="form">
             
             <form class="form" action="upload" method="post">
-                <!-- <label for="title">何について</label> ラベルをつけるかはまだ検討中-->
+                
                 <div class="item">
+                    <h1 class="text-title">タイトル</h1>
                     <input class = "title_input" type="text" name="title" placeholder="タイトル" required autofocus>
                 </div>
                 
-                <!--ここの選択肢をどうするか-->
+                
                 <div class="item">
                     <select class = "select_sports" name="sport" required>
                         <option value="サッカー">サッカー</option>
@@ -30,5 +31,44 @@
             
         </div>
         
+    </main> -->
+
+    <main>
+        <div class="another_form">
+            <form class="another_textform" action="upload" method="post">
+
+                <div class="formgroup" id="sport_title">
+                    <!-- <label for="Sport_title"></label> -->
+                    <input class = "title_input" type="text" name="title" placeholder="タイトル" required autofocus>
+                </div>
+                
+                <div class="formgroup" id="sport_select">
+                    <!-- <label for="Sport_select"></label> -->
+                    <select class = "select_sports" name="sport" required>
+                        <option value="サッカー">サッカー</option>
+                        <option value="テニス">テニス</option>
+                        <option value="ゴルフ">ゴルフ</option>
+                        <option value="バレー">バレー</option>
+                    </select>
+                </div>
+                
+                <div class="formgroup" id="sport_textcontents">
+                    <!-- <label for="Sport_textcontents"></label> -->
+                    <textarea class = "desc_input" type="text" name="content" placeholder="説明" cols="30" rows="5" required autofocus></textarea>
+                </div>
+                
+                  <input type="submit" value="Post" />
+
+            </form>
+        </div>
     </main>
+
+
+
+
+
+
+
+
+
 {% endblock %}

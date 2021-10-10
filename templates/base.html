@@ -27,11 +27,38 @@
 {% block main %}
 {% endblock %}
     <footer>
-        <p><a href="/another"><img src = "{{url_for('static',filename='images/add_button.png')}}"></a></p>
-        <div class = "reg"><h5 class = "reg_text">Codegym_S2_JK<img class = "icon" src = "{{url_for('static',filename='images/icon.png')}}"></h5></div>
+        <div class="text-right">
+            <a href="/another"><i class="fas fa-plus-circle mr-5" style="font-size: 40px; color:grey;"></i></a>
+            <div class = "reg"><h5 class = "reg_text mb-0">Codegym_S2_JK<img class = "icon" src = "{{url_for('static',filename='images/icon.png')}}"></h5></div>
+        </div>
     </footer>
     </body>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script>
+        function popupSetting(){
+        let popup = document.getElementById('popup');
+        if(!popup) return;
+
+        let closeBtn = document.getElementById('close-btn');
+        let showBtn = document.getElementById('1');
+
+        // ポップアップ
+        popUp(closeBtn);
+        popUp(showBtn);
+
+        // ポップアップ処理
+        function popUp(elem){
+            if(!elem) return;
+        
+            elem.addEventListener('click', function(){
+            popup.classList.toggle('is-show');
+            });
+        }
+        }
+
+        // ポップアップのセッティング
+        popupSetting();
+    </script>
 </html>

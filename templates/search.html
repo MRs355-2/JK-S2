@@ -10,26 +10,49 @@
         </div>
         <div class="search_result">
             {% if search_result | length == 0 %}
-                <div class = "not_found"><p>検索結果はありません</p></div>
+                <div class = "not_found"><p>検索結果はありません...</p></div>
                 
             {% else %}
                 {% for search in search_result %}
                     <div class="sport_container mb-3">
-                        <p class="text-left ml-4 mt-0 mb-2 sport_name">{{search[1]}}</p>
+                        <p class="text-left ml-4 mt-0 mb-1 sport_name">{{search[1]}}</p>
                         <!-- マウスホバーで色を変更 -->
-                        <div class="sport text-left ml-4">
+                        <div class="sport text-left ml-4 mb-2">
                             <h1 class="sport_title sport_pattern"><a href="#" id="more_show">{{search[0]}}</a></h1>
                         </div>
-                        <div class="sport text-left ml-5">
-                            <p class="sport_contents sport_pattern">{{search[2]}}</p>
+                        <div class="sport text-left ml-5 mr-5 pr-5">
+                            <div class="cp_box">
+                                <label for="cp01"></label>
+                                <div class="cp_container">
+                                    <p class="sport_contents sport_pattern">{{search[2]}}</p>
+                                </div>
+                            </div>
                         </div>
                         <div class="more_show text-right pb-2 mr-4">
-                            <span class="more_text"><a href="#" style="color: rgba(130, 130, 130 );">もっと見る <i class="fas fa-angle-right"></i></a></span>
+                            <span class="more_text"><a href="#" id="{{search[3]}}" name="{{search[3]}}" style="color: rgba(130, 130, 130 );">もっと見る <i class="fas fa-angle-right"></i></a></span>
                         </div>
                     </div>
                 {% endfor %}
             {% endif %}
         </div>
+        <div id="popup" class="popup">
+            <div class="popup-inner">
+              <div id="close-btn" class="close-btn">✖</div>
+              <div class="img">
+                <div class="sport_container">
+                    <p class="text-left ml-4 pt-2 mb-2 sport_name">Hello</p>
+                    <!-- マウスホバーで色を変更 -->
+                    <div class="sport text-left ml-4">
+                        <h1 class="sport_title sport_pattern"><a href="#" id="more_show">Hello</a></h1>
+                    </div>
+                    <div class="sport text-left ml-5">
+                        <p class="sport_contents sport_pattern">Hello</p>
+                    </div>
+                </div>
+              </div>
+            </div><!-- .popup-inner -->
+            <div id="bg-black" class="bg-black"></div>
+          </div>
     </center>
 </main>
 {% endblock %}
