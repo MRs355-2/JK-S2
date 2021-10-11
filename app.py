@@ -15,24 +15,24 @@ def search():
     
 @app.route("/search_pattern", methods=["POST"])
 def search_pattern():
-    search_name  = request.form["Sport"]
+    search_name = request.form["Sport"]
     cursor.execute("select title, sport, content, id from post where sport like ?",(search_name,))
     search_result = cursor.fetchall()
 
     if search_result ==[]:
-        print("該当なし")
-        return render_template("search.html",search_result=search_result)
-        #HTML上にアラートとして出力
+        notfound = "検索結果が見つかりませんでした。"
+        return render_template("search.html", notfound=notfound)
     else:
         return render_template("search.html",search_result=search_result)
-        print("ui")
     cursor.close()
 
 # @app.route("/search_pattern", methods=["POST"])
 # def more_show():
-#     more_text = request.form["name"]
-
-#     more_text == 
+#     id_name = request.form["1"]
+#     cursor.execute("select title, sport, content from post where id like ?",(id_name,))
+#     more_text = cursor.fetchall()
+#     print(more_text)
+#     return render_template("search.html",more_text=more_text)
 
     
 @app.route('/another', methods=["GET", "POST"])
@@ -43,12 +43,13 @@ def second():
 def upload():
     cursor.execute("INSERT INTO post (title, sport, content, like) VALUES (?, ?, ?, 0)",
                   [request.form.get("title"), request.form.get("sport"), request.form.get("content")])
+    db_conect.commit()
     return redirect("/")
 
 
 db_conect.commit()
 # cursor.close()
-db_conect.commit()
+
 
 app.debug =  True
 app.run()

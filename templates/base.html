@@ -20,16 +20,20 @@
     <body>
     <header>
         <div class = "header_logo">
-            <p><a href="/"><img src="{{ url_for('static',filename='images/logo_jp.png') }}" alt = "logo_img" title = "headerlogo"></a></p>
+            <a href="/"><img src="{{ url_for('static',filename='images/logo_jp.png') }}" alt = "logo_img" title = "headerlogo"></a>
         </div>
     </header>
     
 {% block main %}
 {% endblock %}
     <footer>
-        <div class="text-right">
+        <div class="post_icon text-center mr-4">
             <a href="/another"><i class="fas fa-plus-circle mr-5" style="font-size: 40px; color:grey;"></i></a>
-            <div class = "reg"><h5 class = "reg_text mb-0">Codegym_S2_JK<img class = "icon" src = "{{url_for('static',filename='images/icon.png')}}"></h5></div>
+        </div>
+        <div class="text-right mr-3 mb-3">
+            <img class = "icon" src = "{{url_for('static',filename='images/icon.png')}}">
+            <div class = "reg"><h5 class = "reg_text mb-0">Codegym_S2_JK</h5>
+        </div>
         </div>
     </footer>
     </body>

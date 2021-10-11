@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block main %}
-<main>
+<main class="main">
     <center>
         <div class="search_form mt-5 mb-5">
             <form action = "{{url_for('search_pattern')}}" method = "POST" class="search_container">
@@ -9,10 +9,7 @@
             </form>
         </div>
         <div class="search_result">
-            {% if search_result | length == 0 %}
-                <div class = "not_found"><p>検索結果はありません...</p></div>
-                
-            {% else %}
+                <div class = "not_found"><p>{{notfound}}</p></div>
                 {% for search in search_result %}
                     <div class="sport_container mb-3">
                         <p class="text-left ml-4 mt-0 mb-1 sport_name">{{search[1]}}</p>
@@ -33,20 +30,19 @@
                         </div>
                     </div>
                 {% endfor %}
-            {% endif %}
         </div>
         <div id="popup" class="popup">
             <div class="popup-inner">
               <div id="close-btn" class="close-btn">✖</div>
               <div class="more_text_show">
                 <div class="sport_container">
-                    <p class="text-left ml-4 pt-2 mb-2 sport_name">Hello</p>
+                    <p class="text-left ml-4 pt-2 mb-2 sport_name">more_text[0]</p>
                     <!-- マウスホバーで色を変更 -->
                     <div class="more_sport text-left ml-4 mb-3">
-                        <h1 class="sport_title sport_pattern"><a href="#" id="more_show">Hello</a></h1>
+                        <h1 class="sport_title sport_pattern"><a href="#" id="more_show">more_text[1]</a></h1>
                     </div>
                     <div class="more_sport text-left ml-5 mb-5">
-                        <p class="sport_contents sport_pattern">Hello</p>
+                        <p class="sport_contents sport_pattern">more_text[2]</p>
                     </div>
                 </div>
               </div>
