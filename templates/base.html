@@ -41,28 +41,47 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script>
-        function popupSetting(){
-        let popup = document.getElementById('popup');
-        if(!popup) return;
 
-        let closeBtn = document.getElementById('close-btn');
-        let showBtn = document.getElementById('1');
+        function jsEvent(value){
+            console.log(value);
+            function popupSetting(){
+            let popup = document.getElementById('popup');
+            if(!popup) return;
 
-        // ポップアップ
-        popUp(closeBtn);
-        popUp(showBtn);
+            let closeBtn = document.getElementById('close-btn');
+            let showBtn = document.getElementById(value);
 
-        // ポップアップ処理
-        function popUp(elem){
-            if(!elem) return;
+            // ポップアップ
+            popUp(closeBtn);
+            popUp(showBtn);
+
+            // ポップアップ処理
+            function popUp(elem){
+                if(!elem) return;
+            
+                elem.addEventListener('click', function(){
+                popup.classList.toggle('is-show');
+                });
+            }
+            }
+
+            // let clone_sport = document.getElementById("clone_sport");
+            // let clone_title = document.getElementById("clone_title");
+            // let clone_contents = document.getElementById("clone_contents");
+
+            // let clone_sport_element = clone_sport.cloneNode(true);
+            // let clone_title_element = clone_title.cloneNode(true);
+            // let clone_contents_element = clone_contents.cloneNode(true);
+
+            // clone_sport_after.after(clone_sport_element);
+            // clone_title_after.after(clone_title_element);
+            // clone_contents_after.after(clone_contents_element);
+
+            // ポップアップのセッティング
+            popupSetting();
+        }
         
-            elem.addEventListener('click', function(){
-            popup.classList.toggle('is-show');
-            });
-        }
-        }
 
-        // ポップアップのセッティング
-        popupSetting();
+        
     </script>
 </html>

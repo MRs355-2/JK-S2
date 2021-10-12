@@ -18,7 +18,6 @@ def search_pattern():
     search_name = request.form["Sport"]
     cursor.execute("select title, sport, content, id from post where sport like ?",(search_name,))
     search_result = cursor.fetchall()
-
     if search_result ==[]:
         notfound = "検索結果が見つかりませんでした。"
         return render_template("search.html", notfound=notfound)
@@ -27,12 +26,13 @@ def search_pattern():
     cursor.close()
 
 # @app.route("/search_pattern", methods=["POST"])
-# def more_show():
-#     id_name = request.form["1"]
+# def text_show():
+#     id_name = request.form["test"]
 #     cursor.execute("select title, sport, content from post where id like ?",(id_name,))
 #     more_text = cursor.fetchall()
 #     print(more_text)
-#     return render_template("search.html",more_text=more_text)
+#     return render_template("search.html")
+#     cursor.close()
 
     
 @app.route('/another', methods=["GET", "POST"])
