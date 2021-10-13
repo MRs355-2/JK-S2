@@ -1,17 +1,16 @@
 {% extends 'base.html' %}
 {% block main %}
-<!--新しい投稿-->
     <main>
-        <div class="form">
-            
-            <form class="form" action="upload" method="post">
-                <!-- <label for="title">何について</label> ラベルをつけるかはまだ検討中-->
-                <div class="item">
+        <div class="another_form">
+            <form class="another_textform" action="upload" method="post">
+
+                <div class="formgroup" id="sport_title">
+                    <!-- <label for="Sport_title"></label> -->
                     <input class = "title_input" type="text" name="title" placeholder="タイトル" required autofocus>
                 </div>
                 
-                <!--ここの選択肢をどうするか-->
-                <div class="item">
+                <div class="formgroup" id="sport_select">
+                    <!-- <label for="Sport_select"></label> -->
                     <select class = "select_sports" name="sport" required>
                         <option value="">スポーツ名</option>
                     {% for sport in sports_name %}
@@ -21,15 +20,23 @@
                     </select>
                 </div>
                 
-                <div class="item">
-                    <input class = "desc_input" type="text" name="content" placeholder="説明" required autofocus>
+                <div class="formgroup" id="sport_textcontents">
+                    <!-- <label for="Sport_textcontents"></label> -->
+                    <textarea class = "desc_input" type="text" name="content" placeholder="説明" cols="30" rows="5" required autofocus></textarea>
                 </div>
                 
-                <p><a class = "cancel" href="/">トップページへ戻る</a><button class = "pub_button" type="submit">投稿</button></p>
-                
+                  <input type="submit" value="Post" />
+
             </form>
-            
         </div>
-        
     </main>
+
+
+
+
+
+
+
+
+
 {% endblock %}

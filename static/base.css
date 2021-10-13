@@ -20,11 +20,11 @@ body{
     width:100%;
     top:0%;
     display:flex;
-    position:absolute;
+    position:relative;
 }
 
 footer{
-    position:absolute;
+    position: fixed;
     bottom:0px;
     right:10px;
 }
@@ -46,4 +46,7 @@ main{
 .icon{
     height:50px;
     width:50px;
+}
+.header_logo img{
+    width: 80%;
 }

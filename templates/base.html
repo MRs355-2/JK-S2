@@ -1,6 +1,6 @@
 
 <!doctype html>
-<html>
+<html lang="ja">
     <head>
         <title>TEXPO</title>
         <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='base.css') }}">
@@ -20,18 +20,68 @@
     <body>
     <header>
         <div class = "header_logo">
-            <p><a href="/"><img src="{{ url_for('static',filename='images/logo_jp.png') }}" alt = "logo_img" title = "headerlogo"></a></p>
+            <a href="/"><img src="{{ url_for('static',filename='images/logo_jp.png') }}" alt = "logo_img" title = "headerlogo"></a>
         </div>
     </header>
     
 {% block main %}
 {% endblock %}
     <footer>
-        <p><a href="/another"><img src = "{{url_for('static',filename='images/add_button.png')}}"></a></p>
-        <div class = "reg"><h5 class = "reg_text">Codegym_S2_JK<img class = "icon" src = "{{url_for('static',filename='images/icon.png')}}"></h5></div>
+        <div class="post_icon text-center mr-4">
+            <a href="/another"><i class="fas fa-plus-circle mr-5" style="font-size: 40px; color:grey;"></i></a>
+        </div>
+        <div class="text-right mr-3 mb-3">
+            <img class = "icon" src = "{{url_for('static',filename='images/icon.png')}}">
+            <div class = "reg"><h5 class = "reg_text mb-0">Codegym_S2_JK</h5>
+        </div>
+        </div>
     </footer>
     </body>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script>
+
+        function jsEvent(value){
+            console.log(value);
+            function popupSetting(){
+            let popup = document.getElementById('popup');
+            if(!popup) return;
+
+            let closeBtn = document.getElementById('close-btn');
+            let showBtn = document.getElementById(value);
+
+            // ポップアップ
+            popUp(closeBtn);
+            popUp(showBtn);
+
+            // ポップアップ処理
+            function popUp(elem){
+                if(!elem) return;
+            
+                elem.addEventListener('click', function(){
+                popup.classList.toggle('is-show');
+                });
+            }
+            }
+
+            // let clone_sport = document.getElementById("clone_sport");
+            // let clone_title = document.getElementById("clone_title");
+            // let clone_contents = document.getElementById("clone_contents");
+
+            // let clone_sport_element = clone_sport.cloneNode(true);
+            // let clone_title_element = clone_title.cloneNode(true);
+            // let clone_contents_element = clone_contents.cloneNode(true);
+
+            // clone_sport_after.after(clone_sport_element);
+            // clone_title_after.after(clone_title_element);
+            // clone_contents_after.after(clone_contents_element);
+
+            // ポップアップのセッティング
+            popupSetting();
+        }
+        
+
+        
+    </script>
 </html>
