@@ -12,10 +12,11 @@
                 <div class="formgroup" id="sport_select">
                     <!-- <label for="Sport_select"></label> -->
                     <select class = "select_sports" name="sport" required>
-                        <option value="サッカー">サッカー</option>
-                        <option value="テニス">テニス</option>
-                        <option value="ゴルフ">ゴルフ</option>
-                        <option value="バレー">バレー</option>
+                        <option value="">スポーツ名</option>
+                    {% for sport in sports_name %}
+                        <option value="{{ sport }}">{{ sport }}</option>
+                    {% endfor %}
+                        <option value="other">その他</option>
                     </select>
                 </div>
                 

@@ -53,10 +53,17 @@ input:focus, textarea:focus{
   border: solid 3px #77bde0;  
 }
 
+<<<<<<< HEAD
+.select_sports{
+    width:500px;
+    height:50px;
+    margin:10px;
+=======
 textarea{
   height: 150px;  
   resize: none; 
   overflow: auto;
+>>>>>>> fa5f07bae7442ca02a22fce961ae786c498005b0
 }
 select{ 
   width: 75%;
