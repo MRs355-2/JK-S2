@@ -11,9 +11,8 @@
         <div class="search_result">
                 <div class = "not_found"><p>{{notfound}}</p></div>
                 {% for search in search_result %}
-
                     <div class="sport_container mb-3" id="{{search[3]}}">
-                        <div id="clon_element">
+                        <div id="clon{{search[3]}}">
                             <p class="text-left ml-4 mt-0 mb-1 sport_name">{{search[1]}}</p>
                             <!-- マウスホバーで色を変更 -->
                             <div class="sport text-left ml-4 mb-2">
@@ -36,22 +35,14 @@
                 {% endfor %}
         </div>
         <div id="popup" class="popup">
-            <label id="popid">
             <div class="popup-inner" id="hide">
-              <div id="close-btn clone_position" class="close-btn">✖</div>
-                    <!-- <div class="more_text_show">
-                        <div class="sport_container">
-                            <p class="text-left ml-4 pt-2 mb-2 sport_name">Hello</p>
-                        <div class="more_sport text-left ml-4 mb-3">
-                            <h1 class="sport_title sport_pattern"><a href="#" id="more_show">Hello</a></h1>
-                        </div>
-                        <div class="more_sport text-left ml-5 mb-5">
-                            <p class="sport_contents sport_pattern">Hello</p>
-                        </div>
-                    </div> -->
+              <div id="close-btn" class="close-btn">✖</div>
+                <div class="more_text_show" id="clone">
+                    <div class="sport_container" id="popid">
+                           
+                    </div>
                 </div>
             </div>
-            </label>
             <div id="bg-black" class="bg-black"></div>
         </div>
     </center>

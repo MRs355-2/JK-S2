@@ -50,33 +50,46 @@
 
             let closeBtn = document.getElementById('close-btn');
             let showBtn = document.getElementById(value);
+            
+
 
             // ポップアップ
             popUp(closeBtn);
-            popUp(showBtn);
+            popDown(showBtn);
 
             // ポップアップ処理
+            function popDown(elem){
+                if(!elem) return;
+            
+                elem.addEventListener('click', function(){
+                popup.classList.add('is-show');
+                });
+            }
             function popUp(elem){
                 if(!elem) return;
             
                 elem.addEventListener('click', function(){
-                popup.classList.toggle('is-show');
+                popup.classList.remove('is-show');
                 });
             }
+
+            let copy_element = "clon"+ value;
+            console.log(copy_element)
+            let content_area = document.getElementById(copy_element);
+            let clone_element = content_area.cloneNode(true);
+
+            let clone_area = document.getElementById("popid");
+            clone_area.after(clone_element)
+
+            let re_area = document.querySelector(".more_text_show");
+            let re_close = document.querySelector('.close-btn');
+            re_close.addEventListener('click', ()=>{
+                re_area.remove();
+            });
+
+
+
             }
-
-            // let clone_sport = document.getElementById("clone_sport");
-            // let clone_title = document.getElementById("clone_title");
-            // let clone_contents = document.getElementById("clone_contents");
-
-            // let clone_sport_element = clone_sport.cloneNode(true);
-            // let clone_title_element = clone_title.cloneNode(true);
-            // let clone_contents_element = clone_contents.cloneNode(true);
-
-            // clone_sport_after.after(clone_sport_element);
-            // clone_title_after.after(clone_title_element);
-            // clone_contents_after.after(clone_contents_element);
-
             // ポップアップのセッティング
             popupSetting();
         }
