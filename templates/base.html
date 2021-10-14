@@ -18,6 +18,14 @@
         <!--ブートストラップとアイコン関連のURLを勝手に追加しました。影響はないとおもわれます。 -->
     </head>
     <body>
+
+<!-- テスト -->
+        <div id="particles-js"></div>
+<!-- テスト -->
+
+
+
+
     <header>
         <div class = "header_logo">
             <a href="/"><img src="{{ url_for('static',filename='images/logo_jp.png') }}" alt = "logo_img" title = "headerlogo"></a>
@@ -32,11 +40,15 @@
         </div>
         <div class="text-right mr-3 mb-3">
             <img class = "icon" src = "{{url_for('static',filename='images/icon.png')}}">
-            <div class = "reg"><h5 class = "reg_text mb-0">Codegym_S2_JK</h5>
+            <div class = "reg" id="Command"><h5 class = "reg_text mb-0">Codegym_S2_JK</h5>
         </div>
         </div>
     </footer>
     </body>
+    <!-- Test -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="http://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/move02/5-5/js/5-5.js"></script>
+    <!-- Test -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
@@ -71,32 +83,29 @@
                 });
             }
             let clone_A = "clone_A"+ value;
-            let area_A = document.getElementById(clone_A);
-            let clone_element_A = area_A.cloneNode(true);
-            let pop_A = document.getElementById('pop_A');
-            console.log(clone_element_A)
-            pop_A.appendChild(clone_element_A);
-
             let clone_B = "clone_B"+ value;
-            let area_B = document.getElementById(clone_B);
-            let clone_element_B = area_B.cloneNode(true);
-            let pop_B = document.getElementById('pop_B')
-            pop_B.appendChild(clone_element_B);
-
             let clone_C = "clone_C"+ value;
+
+            let area_A = document.getElementById(clone_A);
+            let area_B = document.getElementById(clone_B);
             let area_C = document.getElementById(clone_C);
+
+            let clone_element_A = area_A.cloneNode(true);
+            let clone_element_B = area_B.cloneNode(true);
             let clone_element_C = area_C.cloneNode(true);
-            let pop_C = document.getElementById('pop_C')
+
+            let pop_A = document.getElementById('pop_A');
+            let pop_B = document.getElementById('pop_B');
+            let pop_C = document.getElementById('pop_C');
+
+            pop_A.appendChild(clone_element_A);
+            pop_B.appendChild(clone_element_B);
             pop_C.appendChild(clone_element_C);
-
-
 
             let re_close = document.querySelector('.close-btn');
             re_close.addEventListener('click', ()=>{
                  location.reload();
             });
-
-
 
             }
             // ポップアップのセッティング
@@ -104,6 +113,109 @@
         }
         
 
+        // Test
+        let date = new Date();
+        let month_date = date.getMonth() + 1;
+        let down_image;
+        console.log(month_date);
+
+            if(month_date>=4 & month_date<6){
+
+            down_image ="static/images/flower.png";
+
+            }else if(month_date>=7 && month_date<8){
+
+            down_image ="static/images/glass.png";
+
+            }else if(month_date>=9 && month_date<11){
+
+            down_image ="static/images/momiji.png";
+
+            }else if(month_date<12 && month_date>=3){
+            down_image = "static/images/snow.png";
+            
+            }
+
+        let Command = document.getElementById("Command");
+        Command.addEventListener('click', ()=>{
+        particlesJS("particles-js", {
+            "particles": {
+                "number": {
+                "value": 150,
+                "density": {
+                    "enable": true,
+                    "value_area": 800
+                }
+                },
+                "color": {
+                "value": "#ffffff"
+                },
+                "shape": {
+                "type": "image",
+                "stroke": {
+                    "width": 3,
+                    "color": "#fff"
+                },
+                "image": {
+                    "src": down_image,
+                    "width": 120,
+                    "height": 120
+                }
+                },
+                "opacity": {
+                "value": 0.7,
+                "random": false,
+                "anim": {
+                    "enable": false,
+                    "speed": 1,
+                    "opacity_min": 0.1,
+                    "sync": false
+                }
+                },
+                "size": {
+                "value": 5,
+                "random": true,
+                "anim": {
+                    "enable": false,
+                    "speed": 20,
+                    "size_min": 0.1,
+                    "sync": false
+                }
+                },
+                "line_linked": {
+                "enable": false,
+                },
+                "move": {
+                "enable": true,
+                "speed": 3,//この数値を小さくするとゆっくりな動きになる
+                "direction": "bottom",//下に向かって落ちる
+                "random": true,//動きはランダム
+                "straight": false,//動きをとどめない
+                "out_mode": "out",//画面の外に出るように描写
+                "bounce": false,//跳ね返りなし
+                "attract": {
+                    "enable": true,
+                    "rotateX": 300,
+                    "rotateY": 1200
+                }
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                "onhover": {
+                    "enable": false,
+                },
+                "onclick": {
+                    "enable": false,
+                },
+                "resize": true
+                }
+            },
+            "retina_detect": true
+        }); 
+        })
+        
         
     </script>
 </html>

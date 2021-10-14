@@ -9,9 +9,6 @@ body, html{
   margin: 0;
   font-family: 'Sniglet', cursive;
 }
-.desc_input{
-  
-}
 
 #form{
   height: 100%; 
@@ -115,7 +112,4 @@ label{
 .formgroup-error{
   background-image: url('http://www.geertjanhendriks.nl/codepen/form/octo-error.png');
   color: red;
-}
-#sport_select{
-
 }
