@@ -44,13 +44,19 @@
     margin: 0;
     text-align: left;
   }
-  #more_show{
+  .more_show{
     color: black;
   }
   .more_icon{
     display: inline-block;
     position: absolute;
     z-index: 10;
+  }
+
+  .more_button{
+    border: none;
+    outline: none;
+    background: transparent;
   }
 
   .search_form{

@@ -50,8 +50,6 @@
 
             let closeBtn = document.getElementById('close-btn');
             let showBtn = document.getElementById(value);
-            
-
 
             // ポップアップ
             popUp(closeBtn);
@@ -72,19 +70,30 @@
                 popup.classList.remove('is-show');
                 });
             }
+            let clone_A = "clone_A"+ value;
+            let area_A = document.getElementById(clone_A);
+            let clone_element_A = area_A.cloneNode(true);
+            let pop_A = document.getElementById('pop_A');
+            console.log(clone_element_A)
+            pop_A.appendChild(clone_element_A);
 
-            let copy_element = "clon"+ value;
-            console.log(copy_element)
-            let content_area = document.getElementById(copy_element);
-            let clone_element = content_area.cloneNode(true);
+            let clone_B = "clone_B"+ value;
+            let area_B = document.getElementById(clone_B);
+            let clone_element_B = area_B.cloneNode(true);
+            let pop_B = document.getElementById('pop_B')
+            pop_B.appendChild(clone_element_B);
 
-            let clone_area = document.getElementById("popid");
-            clone_area.after(clone_element)
+            let clone_C = "clone_C"+ value;
+            let area_C = document.getElementById(clone_C);
+            let clone_element_C = area_C.cloneNode(true);
+            let pop_C = document.getElementById('pop_C')
+            pop_C.appendChild(clone_element_C);
 
-            let re_area = document.querySelector(".more_text_show");
+
+
             let re_close = document.querySelector('.close-btn');
             re_close.addEventListener('click', ()=>{
-                re_area.remove();
+                 location.reload();
             });
 
 
