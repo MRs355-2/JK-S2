@@ -36,7 +36,13 @@
 {% endblock %}
     <footer>
         <div class="post_icon text-center mr-4">
-            <a href="/another"><i class="fas fa-plus-circle mr-5" style="font-size: 40px; color:grey;"></i></a>
+            <!--図形の追加-->
+            <svg height="100" width="150" viewBox = "50,-70,100,160" xmlns="http://www.w3.org/2000/svg">
+            <circle id="shape" cx = "43" cy = "30" r = "40" />
+            <div id = "text">
+                <a href="/another"><span class = "spot"></span><i class="fas fa-plus-circle mr-5" style="font-size: 40px; color:grey;"></i></a>
+            </div>
+            </svg>
         </div>
         <div class="text-right mr-3 mb-3">
             <img class = "icon" src = "{{url_for('static',filename='images/icon.png')}}">
