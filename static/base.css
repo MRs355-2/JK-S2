@@ -50,3 +50,17 @@ main{
 .header_logo img{
     width: 80%;
 }
+
+/* test */
+html,body{
+    height: 100%;/*高さを100%にして描画エリアをとる*/
+  }
+  
+  #particles-js{ 
+    position:fixed;/*描画固定*/
+    z-index:-1;/*描画を一番下に*/
+    width: 100%;
+    height: 100%;
+    background-color:#fafafa;/*背景色*/
+  }
+  

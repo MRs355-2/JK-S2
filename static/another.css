@@ -9,9 +9,6 @@ body, html{
   margin: 0;
   font-family: 'Sniglet', cursive;
 }
-.desc_input{
-  
-}
 
 #form{
   height: 100%; 
@@ -53,17 +50,10 @@ input:focus, textarea:focus{
   border: solid 3px #77bde0;  
 }
 
-<<<<<<< HEAD
-.select_sports{
-    width:500px;
-    height:50px;
-    margin:10px;
-=======
 textarea{
   height: 150px;  
   resize: none; 
   overflow: auto;
->>>>>>> fa5f07bae7442ca02a22fce961ae786c498005b0
 }
 select{ 
   width: 75%;
@@ -122,7 +112,4 @@ label{
 .formgroup-error{
   background-image: url('http://www.geertjanhendriks.nl/codepen/form/octo-error.png');
   color: red;
-}
-#sport_select{
-
 }

@@ -31,16 +31,6 @@ def search_pattern():
 
     cursor.close()
 
-# @app.route("/search_pattern", methods=["POST"])
-# def text_show():
-#     id_name = request.form["test"]
-#     cursor.execute("select title, sport, content from post where id like ?",(id_name,))
-#     more_text = cursor.fetchall()
-#     print(more_text)
-#     return render_template("search.html")
-#     cursor.close()
-
-
 @app.route('/another', methods=["GET", "POST"])
 def second():
     return render_template('another.html', sports_name=sports_name)

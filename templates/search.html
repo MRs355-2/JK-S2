@@ -11,7 +11,6 @@
         <div class="search_result">
                 <div class = "not_found"><p>{{notfound}}</p></div>
                 {% for search in search_result %}
-
                     <div class="sport_container mb-3" id="{{search[3]}}">
                         <div id="clon_element">
                             <!--いいねボタン-->
@@ -19,38 +18,45 @@
                             
                             <!-- マウスホバーで色を変更 -->
                             <div class="sport text-left ml-4 mb-2">
-                                <h1 class="sport_title sport_pattern"><a href="#" id="more_show">{{search[0]}}</a></h1>
+                                <h1 class="sport_title sport_pattern" id="clone_B{{search[3]}}"><a href="#" class="more_show">{{search[0]}}</a></h1>
                             </div>
                             <div class="sport text-left ml-5 mr-5 pr-5">
                                 <div class="cp_box">
                                     <label for="cp01"></label>
                                     <div class="cp_container">
-                                        <p class="sport_contents sport_pattern">{{search[2]}}</p>
+                                        <p class="sport_contents sport_pattern" id="clone_C{{search[3]}}">{{search[2]}}</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="more_show text-right pb-2 mr-4">
                                 <!-- <span class="more_text"><a href="#" id="{{search[3]}}" name="test" value="{{search[3]}}" Onclick="jsEvent(this.value)" style="color: rgba(130, 130, 130 );">もっと見る <i class="fas fa-angle-right"></i></a></span> -->
-                                <button class="more_button" type="submit" id="test" name="test" value="{{search[3]}}" Onclick="jsEvent(this.value)">もっと見る</button>
+                                <button class="more_button" type="submit" id="test" name="test" value="{{search[3]}}" Onclick="jsEvent(this.value)">もっと見る<i class="fas fa-angle-right ml-1"></i></button>
                         </div>
                     </div>
+
+
+                    
                 {% endfor %}
         </div>
         <div id="popup" class="popup">
             <label id="popid">
             <div class="popup-inner" id="hide">
-              <div id="close-btn clone_position" class="close-btn">✖</div>
-                    <!-- <div class="more_text_show">
+              <div id="close-btn" class="close-btn">✖</div>
+                    <div class="more_text_show">
                         <div class="sport_container">
-                            <p class="text-left ml-4 pt-2 mb-2 sport_name">Hello</p>
-                        <div class="more_sport text-left ml-4 mb-3">
-                            <h1 class="sport_title sport_pattern"><a href="#" id="more_show">Hello</a></h1>
+                        <div id="pop_A" class="mt-4">
+
                         </div>
-                        <div class="more_sport text-left ml-5 mb-5">
-                            <p class="sport_contents sport_pattern">Hello</p>
+
+                        <div class="more_sport text-left ml-4 mb-3" id="pop_B">
+
                         </div>
-                    </div> -->
+
+                        <div class="more_sport text-left ml-5 mb-5 mr-5" id="pop_C">
+
+                        </div>
+                    </div>
                 </div>
             </div>
             </label>
