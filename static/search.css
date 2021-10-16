@@ -36,6 +36,8 @@
   .sport_name{
     font-size: 20px;
     color: rgba( 50, 50, 50, 0.6);
+    vertical-align: middle;
+    display: flex;
   }
   .sport_title{
     font-size: 25px;
@@ -137,4 +139,15 @@
   .cp_box .cp_container {
     overflow: hidden;
     height: 100px;
+  }
+  
+  .like {
+    position: relative;
+    margin-left: 60%;
+    background-color: pink;
+    display: flex;
+  }
+  
+  .like_img {
+    opacity: 0.5;
   }
