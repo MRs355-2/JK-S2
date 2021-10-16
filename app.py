@@ -16,12 +16,12 @@ sports_name = ["サッカー", "テニス", "ゴルフ", "バレー"]
 def search():
     return render_template("search.html")
 
-    
+
 @app.route("/search_pattern", methods=["POST"])
 def search_pattern():
 
     search_name = request.form["Sport"]
-    cursor.execute("select title, sport, content, id from post where sport like ?",(search_name,))
+    cursor.execute("select title, sport, content, id, like from post where sport like ?",(search_name,))
     search_result = cursor.fetchall()
     if search_result ==[]:
         notfound = "検索結果が見つかりませんでした。"
@@ -31,7 +31,6 @@ def search_pattern():
 
     cursor.close()
 
-    
 @app.route('/another', methods=["GET", "POST"])
 def second():
     return render_template('another.html', sports_name=sports_name)
@@ -40,7 +39,7 @@ def second():
 def upload():
     cursor.execute("INSERT INTO post (title, sport, content) VALUES (?, ?, ?)",
                   [request.form.get("title"), request.form.get("sport"), request.form.get("content")])
-                  
+
     return redirect("/")
 
 db_connect.commit()
