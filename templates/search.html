@@ -4,7 +4,7 @@
     <center>
         <div class="search_form mt-5 mb-5">
             <form action = "{{url_for('search_pattern')}}" method = "POST" class="search_container">
-                <input name = "Sport" placeholder=" スポーツを検索" size="25" class="search_input">
+                <input name = "Sport" placeholder=" スポーツを検索" size="25" class="search_input" autofocus>
                 <input type ="submit" value = "&#xf002">
             </form>
         </div>
@@ -13,8 +13,18 @@
                 {% for search in search_result %}
                     <div class="sport_container mb-3" id="{{search[3]}}">
                         <div id="clon_element">
-                            <!--いいねボタン-->
-                            <div class="text-left ml-4 mt-0 mb-1 sport_name">{{search[1]}}{{search[3]}}</div>
+                            
+                            <div class="text-left ml-4 mt-0 mb-1 sport_name">{{search[1]}}
+                            
+                                <!--いいねボタン-->
+                                <div class="like">
+                                    <form action="/like" method="POST">
+                                        <button type="submit" name="like" value="{{search[3]}}"><img src="/static/images/likebefore.png" width="27" height="27"></button>{{search[4]}}
+                                    </form>
+                                </div>
+                                
+                            </div>
+
                             
                             <!-- マウスホバーで色を変更 -->
                             <div class="sport text-left ml-4 mb-2">
@@ -38,6 +48,9 @@
 
                     
                 {% endfor %}
+                
+                
+                
         </div>
         <div id="popup" class="popup">
             <label id="popid">
