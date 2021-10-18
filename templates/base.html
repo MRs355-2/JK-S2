@@ -25,13 +25,11 @@
 
 
 
-
     <header>
-        <div class = "header_logo">
+        <div class = "header_logo text-center">
             <a href="/"><img src="{{ url_for('static',filename='images/logo_jp.png') }}" alt = "logo_img" title = "headerlogo"></a>
         </div>
     </header>
-    
 {% block main %}
 {% endblock %}
     <footer>
@@ -132,16 +130,16 @@
             down_image ="static/images/momiji.png";
 
             }else if(month_date<12 && month_date>=3){
-            down_image = "static/images/snow.png";
+            down_image = "static/images/winter_snow_illust_1800.png";
             
             }
 
-        let Command = document.getElementById("Command");
-        Command.addEventListener('click', ()=>{
+        // let Command = document.getElementById("Command");
+        // Command.addEventListener('click', ()=>{
         particlesJS("particles-js", {
             "particles": {
                 "number": {
-                "value": 150,
+                "value": 100,
                 "density": {
                     "enable": true,
                     "value_area": 800
@@ -187,35 +185,33 @@
                 },
                 "move": {
                 "enable": true,
-                "speed": 3,//この数値を小さくするとゆっくりな動きになる
-                "direction": "bottom",//下に向かって落ちる
-                "random": true,//動きはランダム
-                "straight": false,//動きをとどめない
-                "out_mode": "out",//画面の外に出るように描写
-                "bounce": false,//跳ね返りなし
+                "speed": 3,
+                "direction": "bottom",
+                "random": true,
+                "straight": false,
+                "out_mode": "out",
+                "bounce": false,
                 "attract": {
                     "enable": true,
                     "rotateX": 300,
                     "rotateY": 1200
                 }
                 }
-            },
-            "interactivity": {
-                "detect_on": "canvas",
-                "events": {
-                "onhover": {
-                    "enable": false,
                 },
-                "onclick": {
-                    "enable": false,
+                "interactivity": {
+                    "detect_on": "canvas",
+                    "events": {
+                    "onhover": {
+                        "enable": false,
+                    },
+                    "onclick": {
+                        "enable": false,
+                    },
+                    "resize": true
+                    }
                 },
-                "resize": true
-                }
-            },
-            "retina_detect": true
+                "retina_detect": true
         }); 
-        })
-        
-        
+        // })
     </script>
 </html>

@@ -4,10 +4,18 @@
     <center>
         <div class="search_form mt-5 mb-5">
             <form action = "{{url_for('search_pattern')}}" method = "POST" class="search_container">
-                <input name = "Sport" placeholder=" スポーツを検索" size="25" class="search_input">
-                <input type ="submit" value = "&#xf002">
+                <input name = "Sport" placeholder=" 検索" size="25" class="search_input">
+                <input type ="submit" value = "&#xf002" class="test">
+                <div class="sort_select mt-3">
+                    <select class="search_result_sort" name="sort">
+                        <option value="">並び替え</option>
+                        <option value="like">人気順</option>
+                        <option value="id">新しい順</option>
+                    </select>
+                </div>
             </form>
         </div>
+
         <div class="search_result">
                 <div class = "not_found"><p>{{notfound}}</p></div>
                 {% for search in search_result %}

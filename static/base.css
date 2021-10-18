@@ -1,8 +1,10 @@
 .header_logo{
     text-align:center;
     left:30%;
-    top:-10px;
-    position:absolute;
+    top:-10px;   
+}
+.header_logo img{
+    width: 30%;
 }
 
 .reg{
@@ -13,14 +15,6 @@
 
 .reg_text{
     bottom:0px;
-}
-
-body{
-    height:100%;
-    width:100%;
-    top:0%;
-    display:flex;
-    position:relative;
 }
 
 footer{
@@ -46,9 +40,6 @@ main{
 .icon{
     height:50px;
     width:50px;
-}
-.header_logo img{
-    width: 80%;
 }
 
 /* test */

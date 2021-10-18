@@ -56,7 +56,7 @@ textarea{
   overflow: auto;
 }
 select{ 
-  width: 75%;
+  width: 100%;
   border-radius: 20px;
   outline: none;
   padding: 10px;
@@ -90,6 +90,9 @@ label{
   font-size: 1.5em;
   margin-top: 20px;
   padding-left: 20px;
+}
+.select_formgroup{
+  margin-bottom: 30px;
 }
 .formgroup, .formgroup-active, .formgroup-error{
   background-repeat: no-repeat;

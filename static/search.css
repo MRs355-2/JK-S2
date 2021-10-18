@@ -24,7 +24,6 @@
     display: inline-block;
     vertical-align: middle;
     position:absolute;
-    left: 380px;
   }
   .hr{
     margin: 0;
@@ -66,10 +65,16 @@
 
   .search_result{
       position: relative;
-      top: 150px;
+      top: 180px;
       right: 30%;
   }
-
+  .test{
+    width: 10%;
+  }
+  .sort_select{
+    width: 20%;
+    margin-left: 80%;
+  }
   .popup {
     position: fixed;
     left: 0;
