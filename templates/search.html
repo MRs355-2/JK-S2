@@ -20,8 +20,20 @@
                 <div class = "not_found"><p>{{notfound}}</p></div>
                 {% for search in search_result %}
                     <div class="sport_container mb-3" id="{{search[3]}}">
-                        <div id="clon{{search[3]}}">
-                            <p class="text-left ml-4 mt-0 mb-1 sport_name" id="clone_A{{search[3]}}">{{search[1]}}</p>
+                        <div id="clon_element">
+                            
+                            <div class="text-left ml-4 mt-0 mb-1 sport_name">{{search[1]}}
+                            
+                                <!--いいねボタン-->
+                                <div class="like">
+                                    <form action="/like" method="POST">
+                                        <button type="submit" name="like" value="{{search[3]}}"><img src="/static/images/likebefore.png" width="27" height="27"></button>{{search[4]}}
+                                    </form>
+                                </div>
+                                
+                            </div>
+
+                            
                             <!-- マウスホバーで色を変更 -->
                             <div class="sport text-left ml-4 mb-2">
                                 <h1 class="sport_title sport_pattern" id="clone_B{{search[3]}}"><a href="#" class="more_show">{{search[0]}}</a></h1>
@@ -44,6 +56,9 @@
 
                     
                 {% endfor %}
+                
+                
+                
         </div>
         <div id="popup" class="popup">
             <label id="popid">
