@@ -17,9 +17,15 @@ user_ip = socket.gethostbyname(user_host)
 
 @app.route("/")
 def search():
-    print(user_ip)
+    cursor.execute("select user_ip from user where user_ip like ?",(user_ip,))
+    user_certification = cursor.fetchall()
+    if  not user_certification:
+        cursor.execute("INSERT INTO user (user_ip) VALUES (?)", (user_ip,))
+
+    db_connect.commit()
     return render_template("search.html")
-    
+
+
 @app.route("/search_pattern", methods=["GET","POST"])
 
 def search_pattern():
@@ -32,25 +38,25 @@ def search_pattern():
 
     else:
         if sort_result == "id":
-            cursor.execute("select title, sport, content, id from post where sport like ? order by id desc;",(search_name,))
+            cursor.execute("select title, sport, content, id, like from post where sport like ? order by id desc;",(search_name,))
             search_result = cursor.fetchall()
         elif sort_result == "like":
-            cursor.execute("select title, sport, content, id from post where sport like ? order by like desc;",(search_name,))
+            cursor.execute("select title, sport, content, id, like from post where sport like ? order by like desc;",(search_name,))
             search_result = cursor.fetchall()
         else:
-            cursor.execute("select title, sport, content, id from post where sport like ?",(search_name,))
+            cursor.execute("select title, sport, content, id, like from post where sport like ?",(search_name,))
             search_result = cursor.fetchall()
 
     if search_result ==[]:
 
         if sort_result == "id":
-            cursor.execute("select title, sport, content, id from post where title like ? order by id desc;",("%"+ search_name +"%",))
+            cursor.execute("select title, sport, content, id, like from post where title like ? order by id desc;",("%"+ search_name +"%",))
             search_result = cursor.fetchall()
         elif sort_result == "like":
-            cursor.execute("select title, sport, content, id from post where title like ? order by like desc;",("%"+ search_name +"%",))
+            cursor.execute("select title, sport, content, id, like from post where title like ? order by like desc;",("%"+ search_name +"%",))
             search_result = cursor.fetchall()
         else:
-            cursor.execute("select title, sport, content, id from post where title like ?",("%"+ search_name +"%",))
+            cursor.execute("select title, sport, content, id, like from post where title like ?",("%"+ search_name +"%",))
             search_result = cursor.fetchall()
 
         if search_result ==[]:
@@ -60,8 +66,6 @@ def search_pattern():
             return render_template("search.html",search_result=search_result)
     else:
             return render_template("search.html",search_result=search_result)
-
-
     cursor.close()
 
 @app.route('/another', methods=["GET", "POST"])
@@ -71,7 +75,7 @@ def second():
 @app.route('/upload', methods=["GET", "POST"])
 def upload():
     cursor.execute("INSERT INTO post (title, sport, content) VALUES (?, ?, ?)",
-                  [request.form.get("title"), request.form.get("sport"), request.form.get("content")])
+            [request.form.get("title"), request.form.get("sport"), request.form.get("content")])
 
     return redirect("/")
 
@@ -79,30 +83,61 @@ def upload():
 def like():
     
     #like数を一つ増やす
-    cursor.execute("select likes from post where id = ?", (request.form.get("like"),))
-    likesplus = cursor.fetchall()
-    likesplus = likesplus[0][0] + 1
-    cursor.execute("UPDATE post SET likes = ? WHERE id = ?", (likesplus, request.form.get("like")))
+    #post_id
+    post_id = request.form.get("like")
+    cursor.execute("select user_id from like where post_id = ?", (post_id,))
+    like_user = cursor.fetchall()
+
+    cursor.execute("select like from post where id = ?", (post_id,))
+    like_add = cursor.fetchall()
+
+    if not like_user:
+        cursor.execute("select user_id from user where user_ip = ?", (user_ip,))
+        user_id = cursor.fetchall()
+        for userID in user_id:
+            for user_id in userID:
+                cursor.execute("INSERT INTO like (user_id, post_id) VALUES (?, ?)", (user_id, post_id))
+                cursor.execute("select bool from like where post_id = ?", (post_id,))
+                like_bool = cursor.fetchall()
+                for likeBool in like_bool:
+                    for like_bool in likeBool:
+                        if like_bool == 1:
+                            print("いいねできませんよ")
+                        else:
+                            cursor.execute("update like set bool = ? where post_id = ?", (1, post_id))
+                            for Addlike in like_add:
+                                for like_add in Addlike:
+                                    like_add += 1
+                                    cursor.execute("update post set like = ? where id = ?", (like_add, post_id))
+                            print("追加した")
+        db_connect.commit()
+    else:
+        cursor.execute("select bool from like where post_id = ?", (post_id,))
+        like_bool = cursor.fetchall()
+        for likeBool in like_bool:
+            for like_bool in likeBool:
+                if like_bool == 1:
+                    print("いいねできません")
+                else:
+                    cursor.execute("update like set bool = ? where post_id = ?", (1, post_id))
+                    for Addlike in like_add:
+                        for like_add in Addlike:
+                            like_add += 1
+                            cursor.execute("update post set like = ? where id = ?", (like_add, post_id))
+
+        #ここで以前検索したページの情報を取りたいんですけど、このsearch_nameをどうやって取得するのかがわかりません
+        #cursor.execute("select title, sport, content, id, likes from post where sport like ?",(search_name,))
+        #search_result = cursor.fetchall()
+        
+        #likedはsearch.htmlでif文を使うために設定しました。とくに関係ありません。post_idはそのidの投稿に飛べるようにと思ったんですが、まだhtmlではなにもしていません。
+        #return render_template("search.html",search_result=search_result, liked=True, post_id=request.form.get("like"))
+        db_connect.commit()
+    
     db_connect.commit()
     
-    #ここで以前検索したページの情報を取りたいんですけど、このsearch_nameをどうやって取得するのかがわかりません
-    #cursor.execute("select title, sport, content, id, likes from post where sport like ?",(search_name,))
-    #search_result = cursor.fetchall()
-    
-    #likedはsearch.htmlでif文を使うために設定しました。とくに関係ありません。post_idはそのidの投稿に飛べるようにと思ったんですが、まだhtmlではなにもしていません。
-    #return render_template("search.html",search_result=search_result, liked=True, post_id=request.form.get("like"))
-    
-    #とりあえず最初の検索画面に飛べるようにします
     return redirect("/")
 
 db_connect.commit()
-# cursor.close()
-
-
-#####テスト#####
-
-
-#####テスト#####
 
 app.debug =  True
 app.run()
