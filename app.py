@@ -65,7 +65,7 @@ def search_pattern():
         else:
             return render_template("search.html",search_result=search_result)
     else:
-            return render_template("search.html",search_result=search_result)
+        return render_template("search.html",search_result=search_result)
     cursor.close()
 
 @app.route('/another', methods=["GET", "POST"])
@@ -74,10 +74,14 @@ def second():
 
 @app.route('/upload', methods=["GET", "POST"])
 def upload():
+    title = request.form.get("title")
+    sport = request.form.get("sport")
+    content = request.form.get("content")
+    search_result = [(title, sport, content)]
     cursor.execute("INSERT INTO post (title, sport, content) VALUES (?, ?, ?)",
-            [request.form.get("title"), request.form.get("sport"), request.form.get("content")])
-
-    return redirect("/")
+            [title, sport, content])
+    # cursor.execute("select like from post where=" )
+    return render_template("search.html",search_result=search_result)
 
 @app.route('/like', methods=["GET", "POST"])
 def like():
@@ -125,17 +129,21 @@ def like():
                             like_add += 1
                             cursor.execute("update post set like = ? where id = ?", (like_add, post_id))
 
-        #ここで以前検索したページの情報を取りたいんですけど、このsearch_nameをどうやって取得するのかがわかりません
-        #cursor.execute("select title, sport, content, id, likes from post where sport like ?",(search_name,))
-        #search_result = cursor.fetchall()
-        
-        #likedはsearch.htmlでif文を使うために設定しました。とくに関係ありません。post_idはそのidの投稿に飛べるようにと思ったんですが、まだhtmlではなにもしていません。
-        #return render_template("search.html",search_result=search_result, liked=True, post_id=request.form.get("like"))
-        db_connect.commit()
     
+    
+    # # ここで以前検索したページの情報を取りたいんですけど、このsearch_nameをどうやって取得するのかがわかりません
+    cursor.execute("select title from post where id=?",(post_id,))
+    search_result = cursor.fetchall()
+    for SERCH_result in search_result:
+        for search in SERCH_result:
+            cursor.execute("select title, sport, content, id, like from post where title=?", (search,))
+            search_result = cursor.fetchall()
     db_connect.commit()
+    return render_template("search.html",search_result=search_result)
+    # # likedはsearch.htmlでif文を使うために設定しました。とくに関係ありません。post_idはそのidの投稿に飛べるようにと思ったんですが、まだhtmlではなにもしていません。
+    # return render_template("search.html",search_result=search_result, liked=True, post_id=request.form.get("like"))
     
-    return redirect("/")
+    
 
 db_connect.commit()
 
